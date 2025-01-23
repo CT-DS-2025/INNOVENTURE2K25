@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Ideathon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: url('https://png.pngtree.com/thumb_back/fh260/background/20240103/pngtree-vivid-abstract-texture-a-burst-of-colorful-background-image_13892083.png') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            width: 60px;
+        }
+
+        .logo-left {
+            left: 10px;
+        }
+
+        .logo-center {
+            position: absolute;
+            top: 20px;
+            width: 110px;
+        }
+
+        .logo-right {
+            right: 10px;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            margin: 0 10px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(to right, #16a085, #1abc9c);
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .confetti {
+            position: absolute;
+            top: -10px;
+            width: 8px;
+            height: 8px;
+            background-color: red;
+            opacity: 0.7;
+            transform: rotate(45deg);
+            animation: fall 4s linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1em;
+            }
+
+            .btn {
+                font-size: 0.9em;
+                padding: 10px 20px;
+            }
+
+            .logo {
+                width: 50px;
+            }
+
+            .logo-center {
+                width: 70px;
+                top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <!-- Logos -->
+    <img src="left_logo.png" alt="Left Logo" class="logo logo-left">
+    <img src="center_logo.png" alt="Center Logo" class="logo logo-center">
+    <img src="right_logo.png" alt="Right Logo" class="logo logo-right">
+
+    <!-- Content -->
+    <div class="container">
+        <h1>Welcome to Innoventure</h1>
+        <h2>Sri Krishna Arts and Science College - Coimbatore</h2>
+        <h2>Department of Computer Technology and Data Science</h2>
+        <a href="home.html" class="btn">Get Started</a>
+    </div>
+
+    <!-- Confetti Script -->
+    <script>
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+
+            // Randomize confetti properties
+            const size = Math.random() * 6 + 4;
+            const left = Math.random() * 100;
+            const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+
+            confetti.style.width = `${size}px`;
+            confetti.style.height = `${size}px`;
+            confetti.style.left = `${left}vw`;
+            confetti.style.backgroundColor = color;
+
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 4000);
+        }
+
+        const duration = 7000;
+        const interval = 100;
+
+        const confettiInterval = setInterval(createConfetti, interval);
+
+        setTimeout(() => {
+            clearInterval(confettiInterval);
+        }, duration);
+    </script>
+</body>
+</html>
